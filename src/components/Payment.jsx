@@ -30,7 +30,7 @@ export default function Payment() {
     };
 
     event.id = getEventHash(event);
-    event.sig = signEvent(event, pk);
+    event.sig = signEvent(event, sk);
 
     publish(event);
   };
@@ -40,8 +40,7 @@ export default function Payment() {
       <Feed />
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={() => setOpen(true)}
-      >
+        onClick={() => setOpen(true)}>
         Open Modal
       </button>
       <Modal
