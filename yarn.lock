@@ -210,6 +210,11 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
+"@dipser/epc-qr-code.js@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/@dipser/epc-qr-code.js/-/epc-qr-code.js-1.0.3.tgz"
+  integrity sha512-1+jc9sfsgg45M+8lxW19ogKFEAwTPafPwcw5xdKprHoOTNbVwEcilxrAMZ5h+yGBSoOusnXC+3SGCNvXsoTM2Q==
+
 "@esbuild/darwin-arm64@0.17.13":
   version "0.17.13"
   resolved "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.17.13.tgz"
