@@ -4,89 +4,19 @@ import Button from "./Button";
 import PaymentModal from "./PaymentModal";
 import AcceptModal from "./AcceptModal";
 
-export default function GlobalFeed() {
-  const now = useRef(new Date()); // Make sure current time isn't re-rendered
-
-  const tempData = [
-    {
-      user: "skldjf",
-      cash: "40€",
-      distance: "10km",
-    },
-    {
-      user: "slskjslkjlkjkldjf",
-      cash: "50€",
-      distance: "20km",
-    },
-    {
-      user: "skljksdfjlsldjf",
-      cash: "40€",
-      distance: "10km",
-    },
-    {
-      user: "skleeeedjf",
-      cash: "40€",
-      distance: "10km",
-    },
-    {
-      user: "skldjf",
-      cash: "40€",
-      distance: "10km",
-    },
-    {
-      user: "skldjf",
-      cash: "40€",
-      distance: "10km",
-    },
-    {
-      user: "skldjf",
-      cash: "40€",
-      distance: "10km",
-    },
-    {
-      user: "skldjf",
-      cash: "40€",
-      distance: "10km",
-    },
-    {
-      user: "skleeeedjf",
-      cash: "40€",
-      distance: "10km",
-    },
-    {
-      user: "skldjf",
-      cash: "40€",
-      distance: "10km",
-    },
-    {
-      user: "skldjf",
-      cash: "40€",
-      distance: "10km",
-    },
-    {
-      user: "skldjf",
-      cash: "40€",
-      distance: "10km",
-    },
-    {
-      user: "skldjf",
-      cash: "40€",
-      distance: "10km",
-    },
-  ];
-
+export default function Feed({ events }) {
   const [openRequest, setOpenRequest] = useState(false);
   const [openAccept, setOpenAccept] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState(null);
 
   const handleClick = (request) => {
-    setOpenAccept(true);
     setSelectedRequest(request);
+    setOpenAccept(true);
   };
 
   return (
     <div className="relative">
-      {tempData.map((item) => (
+      {events.map((item) => (
         <div className="bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 m-3 p-2 flex flex-row justify-between">
           <div className="">
             <p>

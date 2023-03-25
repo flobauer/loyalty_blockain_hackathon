@@ -1,4 +1,4 @@
-import Feed from "./components/Feed";
+import Feed from "./pages/Feed";
 import QR from "./components/QR";
 import Payment from "./pages/Payment";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
