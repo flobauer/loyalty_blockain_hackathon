@@ -2,9 +2,17 @@ import { useState, useRef } from "react";
 import { MapPinIcon, PlusIcon } from "@heroicons/react/24/outline";
 import Button from "./Button";
 import PaymentModal from "./PaymentModal";
+import AcceptModal from "./AcceptModal";
 
 export default function Feed({ events }) {
-  const [open, setOpen] = useState(false);
+  const [openRequest, setOpenRequest] = useState(false);
+  const [openAccept, setOpenAccept] = useState(false);
+  const [selectedRequest, setSelectedRequest] = useState(null);
+
+  const handleClick = (request) => {
+    setSelectedRequest(request);
+    setOpenAccept(true);
+  };
 
   return (
     <div className="relative">
@@ -20,18 +28,24 @@ export default function Feed({ events }) {
             </p>
           </div>
           <div className="flex content-around p-2">
-            <Button>Help out</Button>
+            <Button onClick={() => handleClick(item)}>Help out</Button>
           </div>
         </div>
       ))}
-      {!open && (
+      {!openRequest && (
         <button
-          onClick={() => setOpen(true)}
-          className="fixed bottom-3 left-1/2 transform -translate-x-1/2 p-0 w-16 h-16 bg-yellow-400 rounded-full hover:bg-yellow-500 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
+          onClick={() => setOpenRequest(true)}
+          className="fixed bottom-5 left-1/2 transform -translate-x-1/2 p-0 w-16 h-16 bg-yellow-400 rounded-full hover:bg-yellow-500 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none"
+        >
           <PlusIcon className="w-8 h-8 mx-auto self-center" />
         </button>
       )}
-      <PaymentModal open={open} setOpen={setOpen} />
+      <AcceptModal
+        open={openAccept}
+        setOpen={setOpenAccept}
+        requestData={selectedRequest}
+      />
+      <PaymentModal open={openRequest} setOpen={setOpenRequest} />
     </div>
   );
 }
