@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useNostrEvents, dateToUnix } from "nostr-react";
 import Feed from "../components/Feed";
+import Layout from "../components/Layout";
 
 export default function FeedPage() {
   const now = useRef(new Date()); // Make sure current time isn't re-rendered
@@ -24,5 +25,9 @@ export default function FeedPage() {
       };
     });
 
-  return <Feed events={filteredEvents} />;
+  return (
+    <Layout title="Home">
+      <Feed events={filteredEvents} />
+    </Layout>
+  );
 }

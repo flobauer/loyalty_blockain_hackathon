@@ -32,11 +32,15 @@ export default function Feed({ events }) {
           </div>
         </div>
       ))}
+      {events.length === 0 && (
+        <div className="m-3 p-2 flex flex-row justify-between italic text-gray-600">
+          <p>No ÜBERALL requests at the moment. Stay tuned!</p>
+        </div>
+      )}
       {!openRequest && (
         <button
           onClick={() => setOpenRequest(true)}
-          className="fixed bottom-5 left-1/2 transform -translate-x-1/2 p-0 w-16 h-16 bg-yellow-400 rounded-full hover:bg-yellow-500 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none"
-        >
+          className="fixed bottom-5 left-1/2 transform -translate-x-1/2 p-0 w-16 h-16 bg-yellow-400 rounded-full hover:bg-yellow-500 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
           <PlusIcon className="w-8 h-8 mx-auto self-center" />
         </button>
       )}
