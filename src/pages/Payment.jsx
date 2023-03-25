@@ -1,68 +1,16 @@
-import React, { useEffect, useState } from "react";
-import CircularSlider from "@fseehawer/react-circular-slider";
-import Modal from "../components/Modal";
+import React, { useState } from "react";
 import Button from "../components/Button";
-import PaymentButton from "../components/PaymentButton";
-import AskForGeolocation from "../components/AskForGeolocation";
-import { CheckIcon } from "@heroicons/react/24/outline";
+import PaymentModal from "../components/PaymentModal";
 
 export default function Payment() {
   const [open, setOpen] = useState(false);
-  const [confirmation, setConfirmation] = useState(false);
-  const [value, setValue] = useState(10);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <div>
         <Button onClick={() => setOpen(true)}>Open Modal</Button>
       </div>
-      <Modal
-        open={open}
-        setOpen={setOpen}
-        button={
-          <PaymentButton
-            value={value}
-            setOpen={setOpen}
-            setConfirmation={setConfirmation}
-          />
-        }>
-        <AskForGeolocation>
-          <CircularSlider
-            label="payment"
-            data={[
-              "5€",
-              "10€",
-              "20€",
-              "30€",
-              "40€",
-              "50€",
-              "60€",
-              "70€",
-              "80€",
-              "90€",
-              "100€",
-            ]}
-            dataIndex={10}
-            onChange={(value) => {
-              setValue(value);
-            }}
-            value={value}
-          />
-        </AskForGeolocation>
-      </Modal>
-      <Modal
-        open={confirmation}
-        setOpen={setConfirmation}
-        button={<Button onClick={() => setConfirmation(false)}>Close</Button>}>
-        <div className="flex flex-col gap-6">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
-            <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
-          </div>
-          <span>
-            Your request for <strong>{value}</strong> was published.
-          </span>
-        </div>
-      </Modal>
+      <PaymentModal open={open} setOpen={setOpen} />
     </div>
   );
 }

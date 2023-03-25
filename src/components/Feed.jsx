@@ -1,17 +1,9 @@
 import { useRef } from "react";
-import { useNostrEvents, dateToUnix } from "nostr-react";
 import { MapPinIcon, PlusIcon } from "@heroicons/react/24/outline";
 import Button from "./Button";
 
 export default function GlobalFeed() {
   const now = useRef(new Date()); // Make sure current time isn't re-rendered
-
-  const { events } = useNostrEvents({
-    filter: {
-      since: dateToUnix(now.current), // all new events from now
-      kinds: [1],
-    },
-  });
 
   const tempData = [
     {
