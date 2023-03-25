@@ -3,10 +3,9 @@ import { useLocalStorage } from "../helper/hooks";
 import Button from "../components/Button";
 import Label from "../components/Label";
 import InputWithLabel from "../components/InputWithLabel";
+import IBAN from "iban";
 
 import { generatePrivateKey, getPublicKey } from "nostr-tools";
-
-const byteSize = (str) => new Blob([str]).size;
 
 export default function Settings() {
   const [name, setName] = useLocalStorage("name", "");
@@ -23,7 +22,7 @@ export default function Settings() {
         let pk = getPublicKey(privateKey);
         setPublicKey(pk);
       } catch (e) {
-        // console.log(e);
+        setPublicKey("");
       }
     }
   }, [privateKey]);
@@ -93,7 +92,14 @@ export default function Settings() {
           <div className="px-4 py-6 sm:p-8">
             <div className="grid max-w-2xl grid-cols-1 gap-y-8 gap-x-6 sm:grid-cols-6">
               <div className="col-span-full">
-                <InputWithLabel label="IBAN" value={iban} setValue={setIban} />
+                <InputWithLabel
+                  label="IBAN"
+                  value={iban}
+                  error={!IBAN.isValid(iban) && iban !== ""}
+                  onChange={(e) => {
+                    setIban(e.target.value);
+                  }}
+                />
               </div>
               <div className="sm:col-span-4">
                 <InputWithLabel label="Bic" value={bic} setValue={setBic} />
@@ -127,8 +133,9 @@ export default function Settings() {
                 <InputWithLabel
                   label="Private Key"
                   type="password"
+                  error={!publicKey && privateKey !== ""}
                   value={privateKey}
-                  setValue={setPrivateKey}
+                  onChange={(e) => setPrivateKey(e.target.value)}
                 />
               </div>
               <div className="col-span-2 mt-8">
