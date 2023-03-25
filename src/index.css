@@ -26,3 +26,8 @@ body {
     background-position: 0% 50%;
   }
 }
+
+canvas.mapboxgl-canvas {
+  border-radius: 6px;
+  border: 1px solid #dddddd;
+}

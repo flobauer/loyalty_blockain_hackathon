@@ -38,9 +38,11 @@ export default function AcceptModal({ open, setOpen, requestData }) {
         className="max-w-7xl"
       >
         <p>
-          Will you help out {user?.substring(0, 7)} with {cash}?
+          Will you help out{" "}
+          <span className="font-mono">{user?.substring(0, 7)}</span> with {cash}
+          ?
         </p>
-        <div className="m-2">
+        <div className="mt-2">
           <Map
             longitude={latlon?.lon}
             latitude={latlon?.lat}
