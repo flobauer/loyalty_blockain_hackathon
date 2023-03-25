@@ -3,6 +3,7 @@ import { useNostrEvents, dateToUnix } from "nostr-react";
 import Feed from "./pages/Feed";
 import QR from "./components/QR";
 import Settings from "./pages/Settings";
+import About from "./pages/About";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useLocalStorage } from "./helper/hooks";
 
@@ -40,6 +41,7 @@ export default function MyApp() {
         />
 
         <Route path="/settings" element={<Settings />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );
