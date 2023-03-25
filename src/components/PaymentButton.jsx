@@ -10,7 +10,12 @@ import {
   signEvent,
 } from "nostr-tools";
 
-export default function PaymentButton({ value, setOpen, setConfirmation }) {
+export default function PaymentButton({
+  value,
+  setOpen,
+  setConfirmation,
+  geoHash,
+}) {
   const { publish } = useNostr();
 
   const [privateKey] = useLocalStorage("privateKey", "");
@@ -32,7 +37,7 @@ export default function PaymentButton({ value, setOpen, setConfirmation }) {
     let pk = getPublicKey(privateKey); // `pk` is a hex string
 
     const event = {
-      content: "Loyalty hackathon Test Message 👐🏻👹 + " + value,
+      content: `raikatchu:request:${geoHash}:${value}`,
       kind: 1,
       tags: [],
       created_at: dateToUnix(),

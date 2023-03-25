@@ -12,9 +12,6 @@ export default function MyApp() {
   const amount = "50.00"; // TODO: this should be based on requested amount?
   const reason = "";
 
-  const Handler = () => {
-    setIban("test");
-  };
   return (
     <BrowserRouter>
       <Routes>

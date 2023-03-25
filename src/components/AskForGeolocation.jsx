@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Geohash from "latlon-geohash";
 import { useGeolocated } from "react-geolocated";
 
-export default function AskForGeolocation({ children }) {
+export default function AskForGeolocation({ children, setGeoHash }) {
   const { coords, isGeolocationAvailable, isGeolocationEnabled } =
     useGeolocated({
       positionOptions: {
@@ -15,7 +15,7 @@ export default function AskForGeolocation({ children }) {
     if (coords) {
       console.log(coords);
       const geohash = Geohash.encode(coords.latitude, coords.longitude, 7);
-      console.log(geohash);
+      setGeoHash(geohash);
     }
   }, [coords]);
 

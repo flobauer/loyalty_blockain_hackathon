@@ -16,7 +16,7 @@ export default function FeedPage() {
 
   const filteredEvents = events
     .filter((event) => {
-      return event.content.includes("Loyalty hackathon Test Message 👐🏻👹");
+      return event.content.includes("raikatchu:request");
     })
     .map((event) => {
       return {

@@ -8,6 +8,7 @@ import { CheckIcon } from "@heroicons/react/24/outline";
 
 export default function PaymentModal({ open, setOpen }) {
   const [confirmation, setConfirmation] = useState(false);
+  const [geoHash, setGeoHash] = useState("");
   const [value, setValue] = useState(10);
 
   return (
@@ -20,9 +21,10 @@ export default function PaymentModal({ open, setOpen }) {
             value={value}
             setOpen={setOpen}
             setConfirmation={setConfirmation}
+            geoHash={geoHash}
           />
         }>
-        <AskForGeolocation>
+        <AskForGeolocation setGeoHash={setGeoHash}>
           <CircularSlider
             label="payment"
             progressColorFrom="#FCD34D"
