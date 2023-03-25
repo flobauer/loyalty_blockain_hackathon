@@ -9,5 +9,10 @@ export default function Feed() {
       kinds: [1],
     },
   });
-  return <Feed events={events} />;
+
+  const filteredEvents = events.filter((event) => {
+    return event.content.includes("Loyalty hackathon Test Message 👐🏻👹");
+  });
+
+  return <Feed events={filteredEvents} />;
 }
