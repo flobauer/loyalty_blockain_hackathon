@@ -42,9 +42,9 @@ export default function AcceptModal({ open, setOpen, requestData }) {
         </p>
         <div className="m-2">
           <Map
-            longitude={16.37351128650816}
-            latitude={48.20904017128513}
-            zoom={11}
+            longitude={latlon?.lon}
+            latitude={latlon?.lat}
+            zoom={14}
             mapboxAccessToken="pk.eyJ1IjoiZmxvYmF1IiwiYSI6ImNrdW1uYW12cDFlenUzM282Ym96N3pqYTEifQ.RH29qvuc6pkcbl5JxtDzVQ"
             style={{ width: "100%", height: 200 }}
             mapStyle="mapbox://styles/mapbox/streets-v9"
@@ -90,7 +90,7 @@ export default function AcceptModal({ open, setOpen, requestData }) {
       </Modal>
       <Modal open={confirmation} setOpen={setConfirmation}>
         <div className="flex flex-col gap-6">
-          <p>Thanks mate! go catch em all!</p>
+          <p>Thank you for your help!</p>
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
             <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
           </div>
