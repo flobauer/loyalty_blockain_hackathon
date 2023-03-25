@@ -22,9 +22,9 @@ export default function Settings() {
       try {
         let pk = getPublicKey(privateKey);
         setPublicKey(pk);
-      } catch (e) {
-        setPublicKey("");
-      }
+      } catch (e) {}
+    } else {
+      setPublicKey("");
     }
   }, [privateKey]);
 
