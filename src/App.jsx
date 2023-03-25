@@ -5,6 +5,7 @@ import QR from "./components/QR";
 import Profile from "./pages/Profile";
 import MyProfile from "./pages/MyProfile";
 import Settings from "./pages/Settings";
+import About from "./pages/About";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useLocalStorage } from "./helper/hooks";
 
@@ -44,6 +45,7 @@ export default function MyApp() {
         />
 
         <Route path="/settings" element={<Settings />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );
