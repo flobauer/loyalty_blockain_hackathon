@@ -15,7 +15,7 @@ export default function AnimatedLogo() {
         Raikatchu
       </span>
       <span className="text-gray-600 italic">
-        Waiting for requests that come in - Katsching
+        Waiting for requests that come in - Raika-tsching...
       </span>
     </div>
   );

@@ -62,7 +62,8 @@ export default function Settings() {
                       value={tShirtColor}
                       onChange={(e) => setTShirtColor(e.target.value)}
                       name="tshirtcolor"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                    >
                       <option>Black</option>
                       <option>White</option>
                       <option>Blue</option>
@@ -152,7 +153,8 @@ export default function Settings() {
                       e.preventDefault();
                       const sk = generatePrivateKey();
                       setPrivateKey(sk);
-                    }}>
+                    }}
+                  >
                     Generate Key
                   </Button>
                 </div>
@@ -192,7 +194,8 @@ export default function Settings() {
                       />
                       <label
                         htmlFor="push-everything"
-                        className="block text-sm font-medium leading-6 text-gray-900">
+                        className="block text-sm font-medium leading-6 text-gray-900"
+                      >
                         Everything
                       </label>
                     </div>
@@ -205,7 +208,8 @@ export default function Settings() {
                       />
                       <label
                         htmlFor="push-nothing"
-                        className="block text-sm font-medium leading-6 text-gray-900">
+                        className="block text-sm font-medium leading-6 text-gray-900"
+                      >
                         No push notifications
                       </label>
                     </div>
@@ -215,6 +219,9 @@ export default function Settings() {
             </div>
           </form>
         </div>
+        <a href="/about" className="text-gray-600">
+          About
+        </a>
       </div>
     </Layout>
   );
