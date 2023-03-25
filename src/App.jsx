@@ -1,6 +1,5 @@
 import Feed from "./pages/Feed";
 import QR from "./components/QR";
-import Payment from "./pages/Payment";
 import Settings from "./pages/Settings";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useLocalStorage } from "./helper/hooks";
