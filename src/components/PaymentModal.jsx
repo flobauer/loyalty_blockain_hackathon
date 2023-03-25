@@ -25,6 +25,9 @@ export default function PaymentModal({ open, setOpen }) {
         <AskForGeolocation>
           <CircularSlider
             label="payment"
+            progressColorFrom="#FCD34D"
+            progressColorTo="#FFC0CB"
+            knobColor="#FCD34D"
             data={[
               "5€",
               "10€",

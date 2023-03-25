@@ -23,6 +23,7 @@ export default function FeedPage() {
         user: event.pubkey,
         cash: event.content.split(" ")[event.content.split(" ").length - 1],
         distance: "10km",
+        time: "5min ago",
       };
     });
 
