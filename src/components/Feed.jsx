@@ -20,7 +20,7 @@ export default function Feed({ events }) {
         <div className="bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 m-3 p-2 flex flex-row justify-between">
           <div className="">
             <p>
-              {item.user} needs {item.cash}
+              {item.user.substring(0, 18)} needs {item.cash}
             </p>
             <p>
               <MapPinIcon className="w-5 h-5 inline pb-1" /> {item.distance}{" "}
@@ -40,7 +40,8 @@ export default function Feed({ events }) {
       {!openRequest && (
         <button
           onClick={() => setOpenRequest(true)}
-          className="fixed bottom-5 left-1/2 transform -translate-x-1/2 p-0 w-16 h-16 bg-yellow-400 rounded-full hover:bg-yellow-500 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
+          className="fixed bottom-5 left-1/2 transform -translate-x-1/2 p-0 w-16 h-16 bg-yellow-400 rounded-full hover:bg-yellow-500 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none"
+        >
           <PlusIcon className="w-8 h-8 mx-auto self-center" />
         </button>
       )}
