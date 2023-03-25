@@ -32,11 +32,6 @@ export default function Feed({ events }) {
           </div>
         </div>
       ))}
-      {events.length === 0 && (
-        <div className="m-3 p-2 flex flex-row justify-between italic text-gray-600">
-          <p>No ÜBERALL requests at the moment. Stay tuned!</p>
-        </div>
-      )}
       {!openRequest && (
         <button
           onClick={() => setOpenRequest(true)}
