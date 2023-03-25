@@ -47,7 +47,7 @@ export default function Join({ events }) {
             />
           </div>
           <div className="grid grid-cols-5">
-            <div className="col-span-4">
+            <div className="col-span-3 sm:col-span-4">
               <InputWithLabel
                 label="Private key"
                 value={privateKey}
@@ -55,9 +55,9 @@ export default function Join({ events }) {
                 type="password"
               />
             </div>
-            <div className="pb-3">
+            <div className="pb-3 col-span-2 sm:col-span-1">
               <Button
-                className="sm:mt-8 w-full rounded"
+                className="text-sm mt-8 w-full rounded"
                 onClick={(e) => {
                   e.preventDefault();
                   const sk = generatePrivateKey();
