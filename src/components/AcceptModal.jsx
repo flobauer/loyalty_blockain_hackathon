@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "./Modal";
 import Button from "./Button";
+import AcceptRequestButton from "./AcceptRequestButton";
 import AskForGeolocation from "./AskForGeolocation";
-import { CheckIcon, MapPinIcon } from "@heroicons/react/24/outline";
+import { CheckIcon } from "@heroicons/react/24/outline";
 import Map, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 export default function AcceptModal({ open, setOpen, requestData }) {
   const [confirmation, setConfirmation] = useState(false);
+
+  useEffect(() => {
+    if (confirmation) {
+      setTimeout(() => {
+        setConfirmation(false);
+      }, 1100);
+    }
+  }, [confirmation]);
 
   const { user, cash, location } = requestData || {};
 
@@ -16,7 +25,12 @@ export default function AcceptModal({ open, setOpen, requestData }) {
       <Modal
         open={open}
         setOpen={setOpen}
-        button={<Button onClick={() => setConfirmation(true)}>Accept</Button>}
+        button={
+          <AcceptRequestButton
+            setOpen={setOpen}
+            setConfirmation={setConfirmation}
+          />
+        }
         className="max-w-7xl"
       >
         <p>
@@ -52,11 +66,7 @@ export default function AcceptModal({ open, setOpen, requestData }) {
           </Map>
         </div>
       </Modal>
-      <Modal
-        open={confirmation}
-        setOpen={setConfirmation}
-        button={<Button onClick={() => setConfirmation(false)}>Close</Button>}
-      >
+      <Modal open={confirmation} setOpen={setConfirmation}>
         <div className="flex flex-col gap-6">
           <p>Thanks mate! go catch em all!</p>
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
