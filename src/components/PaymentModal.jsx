@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CircularSlider from "@fseehawer/react-circular-slider";
 import Modal from "../components/Modal";
 import Button from "../components/Button";
@@ -10,6 +10,14 @@ export default function PaymentModal({ open, setOpen }) {
   const [confirmation, setConfirmation] = useState(false);
   const [geoHash, setGeoHash] = useState("");
   const [value, setValue] = useState(10);
+
+  useEffect(() => {
+    if (confirmation) {
+      setTimeout(() => {
+        setConfirmation(false);
+      }, 1100);
+    }
+  }, [confirmation]);
 
   return (
     <>
@@ -51,10 +59,7 @@ export default function PaymentModal({ open, setOpen }) {
           />
         </AskForGeolocation>
       </Modal>
-      <Modal
-        open={confirmation}
-        setOpen={setConfirmation}
-        button={<Button onClick={() => setConfirmation(false)}>Close</Button>}>
+      <Modal open={confirmation} setOpen={setConfirmation}>
         <div className="flex flex-col gap-6">
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
             <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
