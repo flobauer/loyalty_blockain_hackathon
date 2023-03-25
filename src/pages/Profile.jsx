@@ -8,12 +8,25 @@ export default function AllProfile() {
   const { pubkey } = useParams();
 
   if (!pubkey) {
-    return <div>no pubkey</div>;
+    return (
+      <Layout title="404" back="/">
+        <div className="p-8">no user data</div>
+      </Layout>
+    );
   }
 
   const { data: userData } = useProfile({
     pubkey,
   });
+
+  // 404
+  if (!userData) {
+    return (
+      <Layout title="404" back="/">
+        <div className="p-8">no user data</div>
+      </Layout>
+    );
+  }
 
   return (
     <Layout title={userData.name} back="/">
