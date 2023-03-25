@@ -19,8 +19,13 @@ export default function Feed({ events }) {
       {events.map((item) => (
         <div className="bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 m-3 p-2 flex flex-row justify-between">
           <div className="">
+            <img
+              src="https://cat-avatars.vercel.app/api/cat?name={item.user}"
+              className="w-10"
+            />
             <p>
-              {item.user} needs {item.cash}
+              <span className="">{item.user.substring(0, 7)}</span> needs{" "}
+              {item.cash}
             </p>
             <p>
               <MapPinIcon className="w-5 h-5 inline pb-1" /> {item.distance}{" "}
