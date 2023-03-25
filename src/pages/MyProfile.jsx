@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { getPublicKey } from "nostr-tools";
 import { useLocalStorage } from "../helper/hooks";
 import { useProfile } from "nostr-react";
 import Profile from "../templates/Profile";
 import Layout from "../components/Layout";
 
 export default function MyProfile() {
-  const [pubkey] = useLocalStorage("publicKey", "");
+  const [privateKey] = useLocalStorage("privateKey", "");
+
+  const pubkey = getPublicKey(privateKey);
   const { data: userData } = useProfile({
     pubkey,
   });

@@ -44,9 +44,9 @@ export default function Feed({ events }) {
             <Button
               onClick={() => handleClick(item)}
               className="w-16 h-16 rounded-full text-xs">
-              Raika-
+              gimme
               <br />
-              tsching
+              change
             </Button>
           </div>
         </div>

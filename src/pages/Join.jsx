@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useNostr } from "nostr-react";
 import { useLocalStorage } from "../helper/hooks";
 import Layout from "../components/Layout";
 import Button from "../components/Button";
@@ -8,8 +9,12 @@ import AskForGeolocation from "../components/AskForGeolocation";
 
 import { generatePrivateKey } from "nostr-tools";
 
+import { updateProfile } from "../components/NostrProfileButton";
+
 export default function Join({ events }) {
+  const { publish } = useNostr();
   const navigate = useNavigate();
+
   const [name, setName] = useLocalStorage("name", "");
   const [privateKey, setPrivateKey] = useLocalStorage("privateKey", "");
   const [ask, setAsk] = useState(false);
@@ -17,7 +22,12 @@ export default function Join({ events }) {
 
   useEffect(() => {
     if (geoHash && privateKey && name) {
-      navigate("/feed");
+      try {
+        updateProfile({ name, tShirtColor: "", privateKey, publish });
+        navigate("/feed");
+      } catch (e) {
+        alert("Something went wrong, please try again");
+      }
     }
   }, [geoHash]);
 

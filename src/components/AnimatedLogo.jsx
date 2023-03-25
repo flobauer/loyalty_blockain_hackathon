@@ -14,11 +14,9 @@ export default function AnimatedLogo() {
       <span className="text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-200 to-pink-500 animatedLogo">
         ÜBERALL
       </span>
-      <span className="text-2xl font-extrabold ">
-        lovely banking everywhere
-      </span>
+      <span className="text-2xl font-extrabold ">Be the change</span>
       <span className="text-gray-600 italic">
-        Waiting for requests that come in - Raika-tsching...
+        Waiting for requests that come in...
       </span>
     </div>
   );
