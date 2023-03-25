@@ -22,10 +22,10 @@ export default function Feed({ events }) {
           key={item.id}
           className="bg-white border border-gray-200 rounded-lg shadow m-3 p-2 flex flex-row justify-between">
           <div className="flex gap-4 items-center">
-            <Link to={`/profile/${item.user}`}>
+            <Link to={`/profile/${item.user}`} className="w-16 h-16">
               <img
                 src={"https://cat-avatars.vercel.app/api/cat?name=" + item.user}
-                className="w-16 h-16"
+                className="w-full h-full object-contain"
               />
             </Link>
             <div>
