@@ -17,7 +17,7 @@ export default function FeedPage({ events }) {
         user: event.pubkey,
         cash: event.content.split(":")[3],
         time: new Date(event.created_at * 1000).toLocaleString(),
-        location: [geohash.lat, geohash.lon],
+        location: geohash ? [geohash.lat, geohash.lon] : [0, 0],
       };
     });
 

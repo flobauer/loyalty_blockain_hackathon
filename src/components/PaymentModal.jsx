@@ -24,12 +24,16 @@ export default function PaymentModal({ open, setOpen }) {
         open={open}
         setOpen={setOpen}
         button={
-          <PaymentButton
-            value={value}
-            setOpen={setOpen}
-            setConfirmation={setConfirmation}
-            geoHash={geoHash}
-          />
+          geoHash ? (
+            <PaymentButton
+              value={value}
+              setOpen={setOpen}
+              setConfirmation={setConfirmation}
+              geoHash={geoHash}
+            />
+          ) : (
+            <></>
+          )
         }>
         <AskForGeolocation setGeoHash={setGeoHash}>
           <CircularSlider
