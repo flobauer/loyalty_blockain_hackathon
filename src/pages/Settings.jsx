@@ -1,21 +1,14 @@
 import React, { useEffect } from "react";
-import { dateToUnix, useNostr } from "nostr-react";
 import IBAN from "iban";
-import {
-  getEventHash,
-  getPublicKey,
-  signEvent,
-  generatePrivateKey,
-} from "nostr-tools";
+import { getPublicKey, generatePrivateKey } from "nostr-tools";
 import { useLocalStorage } from "../helper/hooks";
 import Layout from "../components/Layout";
 import Button from "../components/Button";
 import Label from "../components/Label";
 import InputWithLabel from "../components/InputWithLabel";
+import NostrProfileButton from "../components/NostrProfileButton";
 
 export default function Settings() {
-  const { publish } = useNostr();
-
   const [name, setName] = useLocalStorage("name", "");
   const [tShirtColor, setTShirtColor] = useLocalStorage("thsirtcolor", "");
   const [iban, setIban] = useLocalStorage("iban", "DE02100100100006820101");
@@ -35,33 +28,6 @@ export default function Settings() {
       setPublicKey("");
     }
   }, [privateKey]);
-
-  const updateProfile = async () => {
-    // make sure user has key set
-    if (!privateKey) {
-      alert("Please add your Private key first!");
-      return;
-    }
-
-    let pk = getPublicKey(privateKey); // `pk` is a hex string
-
-    const event = {
-      content: JSON.stringify({
-        name: name,
-        about: "Tshirt: " + tShirtColor,
-        picture: "https://cat-avatars.vercel.app/api/cat?name=" + pk,
-      }),
-      kind: 0,
-      tags: [],
-      created_at: dateToUnix(),
-      pubkey: pk,
-    };
-
-    event.id = getEventHash(event);
-    event.sig = signEvent(event, privateKey);
-
-    publish(event);
-  };
 
   return (
     <Layout title="Settings" back="/profile">
@@ -96,8 +62,7 @@ export default function Settings() {
                       value={tShirtColor}
                       onChange={(e) => setTShirtColor(e.target.value)}
                       name="tshirtcolor"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                    >
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                       <option>Black</option>
                       <option>White</option>
                       <option>Blue</option>
@@ -114,7 +79,7 @@ export default function Settings() {
               </div>
             </div>
             <div className="flex items-center justify-end gap-x-6 border-t border-gray-900/10 py-4 px-4 sm:px-8">
-              <Button onClick={(e) => updateProfile()}>Save to Nostr</Button>
+              <NostrProfileButton>Save to Nostr</NostrProfileButton>
             </div>
           </form>
         </div>
@@ -190,8 +155,7 @@ export default function Settings() {
                       e.preventDefault();
                       const sk = generatePrivateKey();
                       setPrivateKey(sk);
-                    }}
-                  >
+                    }}>
                     Generate Key
                   </Button>
                 </div>
@@ -231,8 +195,7 @@ export default function Settings() {
                       />
                       <label
                         htmlFor="push-everything"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
+                        className="block text-sm font-medium leading-6 text-gray-900">
                         Everything
                       </label>
                     </div>
@@ -245,8 +208,7 @@ export default function Settings() {
                       />
                       <label
                         htmlFor="push-nothing"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
+                        className="block text-sm font-medium leading-6 text-gray-900">
                         No push notifications
                       </label>
                     </div>

@@ -1,5 +1,7 @@
 import React, { useRef } from "react";
 import { useNostrEvents, dateToUnix } from "nostr-react";
+
+import Join from "./pages/Join";
 import Feed from "./pages/Feed";
 import QR from "./components/QR";
 import Profile from "./pages/Profile";
@@ -28,7 +30,8 @@ export default function MyApp() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Feed events={events} />} />
+        <Route exact path="/" element={<Join />} />
+        <Route exact path="/feed" element={<Feed events={events} />} />
         <Route exact path="/profile" element={<MyProfile />} />
         <Route exact path="/profile/:pubkey" element={<Profile />} />
         <Route

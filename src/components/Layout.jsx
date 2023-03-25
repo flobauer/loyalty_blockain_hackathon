@@ -9,7 +9,7 @@ export default function Layout({ title, back, children }) {
         <div className="flex items-center max-w-6xl mx-auto">
           <h1 className="text-2xl font-bold text-black flex-1">
             <Link
-              to={back ? back : "/"}
+              to={back ? back : "/feed"}
               className="flex items-center space-x-2">
               {back && <ChevronLeftIcon className="h-6 w-6 text-black" />}
               {title}

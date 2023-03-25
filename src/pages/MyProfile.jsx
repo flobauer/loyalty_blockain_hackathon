@@ -12,7 +12,7 @@ export default function MyProfile() {
   });
 
   return (
-    <Layout title="Your profile" back="/">
+    <Layout title="Your profile" back="/feed">
       <Profile data={userData} />
       <div className="p-4 flex justify-end">
         <Link to="/settings" className="my-button">

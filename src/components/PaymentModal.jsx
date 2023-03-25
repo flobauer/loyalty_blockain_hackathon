@@ -4,10 +4,11 @@ import Modal from "../components/Modal";
 import PaymentButton from "../components/PaymentButton";
 import AskForGeolocation from "../components/AskForGeolocation";
 import { CheckIcon } from "@heroicons/react/24/outline";
+import { useLocalStorage } from "../helper/hooks";
 
 export default function PaymentModal({ open, setOpen }) {
   const [confirmation, setConfirmation] = useState(false);
-  const [geoHash, setGeoHash] = useState("");
+  const [geoHash] = useLocalStorage("geoHash", "");
   const [value, setValue] = useState(10);
 
   useEffect(() => {
@@ -35,32 +36,30 @@ export default function PaymentModal({ open, setOpen }) {
             <></>
           )
         }>
-        <AskForGeolocation setGeoHash={setGeoHash}>
-          <CircularSlider
-            label="payment"
-            progressColorFrom="#FCD34D"
-            progressColorTo="#FFC0CB"
-            knobColor="#FCD34D"
-            data={[
-              "5€",
-              "10€",
-              "20€",
-              "30€",
-              "40€",
-              "50€",
-              "60€",
-              "70€",
-              "80€",
-              "90€",
-              "100€",
-            ]}
-            dataIndex={10}
-            onChange={(value) => {
-              setValue(value);
-            }}
-            value={value}
-          />
-        </AskForGeolocation>
+        <CircularSlider
+          label="payment"
+          progressColorFrom="#FCD34D"
+          progressColorTo="#FFC0CB"
+          knobColor="#FCD34D"
+          data={[
+            "5€",
+            "10€",
+            "20€",
+            "30€",
+            "40€",
+            "50€",
+            "60€",
+            "70€",
+            "80€",
+            "90€",
+            "100€",
+          ]}
+          dataIndex={10}
+          onChange={(value) => {
+            setValue(value);
+          }}
+          value={value}
+        />
       </Modal>
       <Modal open={confirmation} setOpen={setConfirmation}>
         <div className="flex flex-col gap-6">

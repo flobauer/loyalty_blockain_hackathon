@@ -22,14 +22,14 @@ export default function AllProfile() {
   // 404
   if (!userData) {
     return (
-      <Layout title="404" back="/">
+      <Layout title="404" back="/feed">
         <div className="p-8">no user data</div>
       </Layout>
     );
   }
 
   return (
-    <Layout title={userData.name} back="/">
+    <Layout title={userData.name} back="/feed">
       <Profile data={userData} />
     </Layout>
   );
