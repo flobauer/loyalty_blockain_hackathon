@@ -1,3 +1,5 @@
+import React, { useRef } from "react";
+import { useNostrEvents, dateToUnix } from "nostr-react";
 import Feed from "./pages/Feed";
 import QR from "./components/QR";
 import Settings from "./pages/Settings";
@@ -12,10 +14,18 @@ export default function MyApp() {
   const amount = "50.00"; // TODO: this should be based on requested amount?
   const reason = "";
 
+  const now = useRef(new Date()); // Make sure current time isn't re-rendered
+  const { events } = useNostrEvents({
+    filter: {
+      since: dateToUnix(now.current), // all new events from now
+      kinds: [1],
+    },
+  });
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Feed />} />
+        <Route exact path="/" element={<Feed events={events} />} />
         <Route
           path="/qr"
           element={

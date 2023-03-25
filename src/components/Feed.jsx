@@ -17,7 +17,9 @@ export default function Feed({ events }) {
   return (
     <div className="relative">
       {events.map((item) => (
-        <div className="bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 m-3 p-2 flex flex-row justify-between">
+        <div
+          key={item.id}
+          className="bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 m-3 p-2 flex flex-row justify-between">
           <div className="flex gap-4 items-center">
             <img
               src={"https://cat-avatars.vercel.app/api/cat?name=" + item.user}
