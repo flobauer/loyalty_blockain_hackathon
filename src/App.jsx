@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import { useNostrEvents, dateToUnix } from "nostr-react";
 import Feed from "./pages/Feed";
 import QR from "./components/QR";
+import Profile from "./pages/Profile";
+import MyProfile from "./pages/MyProfile";
 import Settings from "./pages/Settings";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useLocalStorage } from "./helper/hooks";
@@ -26,6 +28,8 @@ export default function MyApp() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Feed events={events} />} />
+        <Route exact path="/profile" element={<MyProfile />} />
+        <Route exact path="/profile/:pubkey" element={<Profile />} />
         <Route
           path="/qr"
           element={

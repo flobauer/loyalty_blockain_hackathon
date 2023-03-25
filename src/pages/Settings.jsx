@@ -1,14 +1,21 @@
 import React, { useEffect } from "react";
+import { dateToUnix, useNostr } from "nostr-react";
+import IBAN from "iban";
+import {
+  getEventHash,
+  getPublicKey,
+  signEvent,
+  generatePrivateKey,
+} from "nostr-tools";
 import { useLocalStorage } from "../helper/hooks";
 import Layout from "../components/Layout";
 import Button from "../components/Button";
 import Label from "../components/Label";
 import InputWithLabel from "../components/InputWithLabel";
-import IBAN from "iban";
-
-import { generatePrivateKey, getPublicKey } from "nostr-tools";
 
 export default function Settings() {
+  const { publish } = useNostr();
+
   const [name, setName] = useLocalStorage("name", "");
   const [tShirtColor, setTShirtColor] = useLocalStorage("thsirtcolor", "");
   const [iban, setIban] = useLocalStorage("iban", "DE02100100100006820101");
@@ -29,8 +36,35 @@ export default function Settings() {
     }
   }, [privateKey]);
 
+  const updateProfile = async () => {
+    // make sure user has key set
+    if (!privateKey) {
+      alert("Please add your Private key first!");
+      return;
+    }
+
+    let pk = getPublicKey(privateKey); // `pk` is a hex string
+
+    const event = {
+      content: JSON.stringify({
+        name: name,
+        about: "Tshirt: " + tShirtColor,
+        picture: "https://cat-avatars.vercel.app/api/cat?name=" + pk,
+      }),
+      kind: 0,
+      tags: [],
+      created_at: dateToUnix(),
+      pubkey: pk,
+    };
+
+    event.id = getEventHash(event);
+    event.sig = signEvent(event, privateKey);
+
+    publish(event);
+  };
+
   return (
-    <Layout title="Settings" back={true}>
+    <Layout title="Settings" back="/profile">
       <div className="space-y-10 divide-y divide-gray-900/10 max-w-5xl mx-auto p-8">
         <div className="grid grid-cols-1 gap-y-8 gap-x-8 md:grid-cols-3">
           <div className="px-4 sm:px-0">
@@ -77,6 +111,9 @@ export default function Settings() {
                   </div>
                 </div>
               </div>
+            </div>
+            <div className="flex items-center justify-end gap-x-6 border-t border-gray-900/10 py-4 px-4 sm:px-8">
+              <Button onClick={(e) => updateProfile()}>Save to Nostr</Button>
             </div>
           </form>
         </div>
