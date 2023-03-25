@@ -146,7 +146,7 @@ export default function Settings() {
                     onChange={(e) => setPrivateKey(e.target.value)}
                   />
                 </div>
-                <div className="col-span-2 mt-8">
+                <div className="col-span-2 sm:mt-8">
                   <Button
                     onClick={(e) => {
                       e.preventDefault();
