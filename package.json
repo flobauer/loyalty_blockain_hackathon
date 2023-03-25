@@ -13,6 +13,7 @@
     "@fseehawer/react-circular-slider": "^2.5.16",
     "@headlessui/react": "^1.7.13",
     "@heroicons/react": "^2.0.16",
+    "@tailwindcss/forms": "^0.5.3",
     "autoprefixer": "^10.4.14",
     "latlon-geohash": "^2.0.0",
     "nostr-react": "^0.6.4",

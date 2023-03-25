@@ -1,16 +1,21 @@
 import Feed from "./pages/Feed";
 import QR from "./components/QR";
 import Payment from "./pages/Payment";
+import Settings from "./pages/Settings";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useLocalStorage } from "./helper/hooks";
 
 export default function MyApp() {
-  // get iban, bic, name, amount, reason from localStorage or default
-  const iban = localStorage.getItem("iban") || "DE02100100100006820101";
-  const bic = localStorage.getItem("bic") || "PBNKDEFF";
-  const name = localStorage.getItem("name") || "Max Muster";
+  const [iban, setIban] = useLocalStorage("iban", "DE02100100100006820101");
+  const [bic, setBic] = useLocalStorage("bic", "BYLADEM1001");
+  const [name, setName] = useLocalStorage("name", "Max Mustermann");
 
   const amount = "50.00"; // TODO: this should be based on requested amount?
   const reason = "";
+
+  const Handler = () => {
+    setIban("test");
+  };
   return (
     <BrowserRouter>
       <Routes>
@@ -28,6 +33,8 @@ export default function MyApp() {
             />
           }
         />
+
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </BrowserRouter>
   );
