@@ -18,25 +18,34 @@ export default function Feed({ events }) {
     <div className="relative">
       {events.map((item) => (
         <div className="bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 m-3 p-2 flex flex-row justify-between">
-          <div className="">
-            <p>
-              {item.user.substring(0, 18)} needs {item.cash}
-            </p>
-            <p>
-              <MapPinIcon className="w-5 h-5 inline pb-1" /> {item.distance}{" "}
-              away
-            </p>
+          <div className="flex gap-4 items-center">
+            <img
+              src={"https://cat-avatars.vercel.app/api/cat?name=" + item.user}
+              className="w-16 h-16"
+            />
+            <div>
+              <p>
+                <span className="font-mono">{item.user.substring(0, 7)}</span>{" "}
+                <span className="text-gray-500">needs</span> {item.cash}
+              </p>
+              <p className="text-gray-500 text-sm">
+                <MapPinIcon className="w-5 h-5 inline pb-1" />
+                {item.distance} away | {item.time}
+              </p>
+            </div>
           </div>
-          <div className="flex content-around p-2">
-            <Button onClick={() => handleClick(item)}>Help out</Button>
+          <div className="p-2">
+            <Button
+              onClick={() => handleClick(item)}
+              className="w-16 h-16 rounded-full text-xs"
+            >
+              Raika-
+              <br />
+              tsching
+            </Button>
           </div>
         </div>
       ))}
-      {events.length === 0 && (
-        <div className="m-3 p-2 flex flex-row justify-between italic text-gray-600">
-          <p>No ÜBERALL requests at the moment. Stay tuned!</p>
-        </div>
-      )}
       {!openRequest && (
         <button
           onClick={() => setOpenRequest(true)}
