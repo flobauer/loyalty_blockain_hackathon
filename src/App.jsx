@@ -20,7 +20,6 @@ export default function MyApp() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Feed />} />
-        <Route path="/payment" element={<Payment />} />
         <Route
           path="/qr"
           element={

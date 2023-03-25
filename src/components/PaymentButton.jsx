@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocalStorage } from "../helper/hooks";
 
 import { useNostr, dateToUnix } from "nostr-react";
 import Button from "./Button";
@@ -12,9 +13,23 @@ import {
 export default function PaymentButton({ value, setOpen, setConfirmation }) {
   const { publish } = useNostr();
 
+  const [privateKey] = useLocalStorage("privateKey", "");
+
   const onPost = async () => {
-    let sk = generatePrivateKey(); // `sk` is a hex string
-    let pk = getPublicKey(sk); // `pk` is a hex string
+    let sk = privateKey;
+    if (!privateKey) {
+      if (
+        !confirm(
+          "You don't have a private key yet. Do you want to generate one?"
+        )
+      ) {
+        return;
+      }
+
+      sk = generatePrivateKey();
+    }
+
+    let pk = getPublicKey(privateKey); // `pk` is a hex string
 
     const event = {
       content: "Loyalty hackathon Test Message 👐🏻👹 + " + value,
