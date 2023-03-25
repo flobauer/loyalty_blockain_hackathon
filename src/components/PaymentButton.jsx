@@ -22,16 +22,11 @@ export default function PaymentButton({
 
   const onPost = async () => {
     let sk = privateKey;
-    if (!privateKey) {
-      if (
-        !confirm(
-          "You don't have a private key yet. Do you want to generate one?"
-        )
-      ) {
-        return;
-      }
 
-      sk = generatePrivateKey();
+    // make sure user has key set
+    if (!privateKey) {
+      alert("Please add your Private key first!");
+      return;
     }
 
     let pk = getPublicKey(privateKey); // `pk` is a hex string
