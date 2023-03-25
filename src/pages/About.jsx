@@ -25,14 +25,13 @@ export default function About() {
   ];
 
   return (
-    <Layout title="About" back={true}>
+    <Layout title="About" back="/profile">
       <div className="flex flex-col items-center space-y-4">
         <div className="flex flex-col space-y-6">
           {team.map((member, index) => (
             <div
               key={index}
-              className="flex flex-col items-center space-y-2 pb-5 pt-5"
-            >
+              className="flex flex-col items-center space-y-2 pb-5 pt-5">
               <img
                 src={member.image}
                 alt={member.name}

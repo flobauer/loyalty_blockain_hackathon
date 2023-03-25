@@ -22,7 +22,7 @@ export default function FeedPage({ events }) {
     });
 
   return (
-    <Layout title="Home">
+    <Layout title="Change">
       {filteredEvents.length === 0 && <AnimatedLogo />}
       <Feed events={filteredEvents} />
     </Layout>

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import IBAN from "iban";
 import { getPublicKey, generatePrivateKey } from "nostr-tools";
 import { useLocalStorage } from "../helper/hooks";
@@ -218,9 +219,9 @@ export default function Settings() {
             </div>
           </form>
         </div>
-        <a href="/about" className="text-gray-600">
+        <Link to="/about" className="text-gray-600">
           About
-        </a>
+        </Link>
       </div>
     </Layout>
   );
