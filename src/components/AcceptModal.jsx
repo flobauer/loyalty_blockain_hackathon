@@ -8,27 +8,32 @@ import "mapbox-gl/dist/mapbox-gl.css";
 
 export default function AcceptModal({ open, setOpen, requestData }) {
   const [confirmation, setConfirmation] = useState(false);
+  const [completed, setCompleted] = useState(false);
   const { user, cash, distance } = requestData || {};
+
+  const showButtonContent = () => {
+    if (!confirmation && !completed) {
+      return <Button onClick={() => setConfirmation(true)}>Accept</Button>;
+    } else if (!confirmation && completed) {
+      return (
+        <Button
+          onClick={() => {
+            setConfirmation(false);
+            setCompleted(true);
+          }}
+        />
+      );
+    }
+  };
+
   return (
     <Modal
       open={open}
       setOpen={setOpen}
-      button={
-        !confirmation ? (
-          <Button onClick={() => setConfirmation(true)}>Accept</Button>
-        ) : (
-          <Button
-            onClick={() => {
-              setConfirmation(false);
-            }}
-          >
-            Close
-          </Button>
-        )
-      }
+      button={showButtonContent()}
       className="max-w-7xl"
     >
-      {!confirmation ? (
+      {!confirmation && !completed ? (
         <>
           <p>
             Will you help out {user?.substring(0, 7)} with {cash}?
