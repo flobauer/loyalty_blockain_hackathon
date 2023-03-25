@@ -219,9 +219,6 @@ export default function Settings() {
             </div>
           </form>
         </div>
-        <Link to="/about" className="text-gray-600">
-          About
-        </Link>
       </div>
     </Layout>
   );

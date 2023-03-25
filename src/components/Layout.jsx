@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { UserIcon, ChevronLeftIcon } from "@heroicons/react/24/outline";
+import {
+  UserIcon,
+  ChevronLeftIcon,
+  InformationCircleIcon,
+} from "@heroicons/react/24/outline";
 
 export default function Layout({ title, back, children }) {
   return (
@@ -15,6 +19,13 @@ export default function Layout({ title, back, children }) {
               {title}
             </Link>
           </h1>
+
+          <Link to="/about">
+            <InformationCircleIcon
+              className="h-6 w-6 mr-4 text-black"
+              aria-hidden="true"
+            />
+          </Link>
           <Link to="/profile">
             <UserIcon className="h-6 w-6 text-black" aria-hidden="true" />
           </Link>
