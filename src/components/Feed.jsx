@@ -26,7 +26,8 @@ export default function Feed({ events }) {
             <div>
               <p>
                 <span className="font-mono">{item.user.substring(0, 7)}</span>{" "}
-                <span className="text-gray-500">needs</span> {item.cash}
+                <span className="text-gray-500">needs</span> {item.cash}{" "}
+                {"💶".repeat(parseInt(item.cash, 10) / 10)}
               </p>
               <p className="text-gray-500 text-sm">
                 <MapPinIcon className="w-5 h-5 inline pb-1" />
