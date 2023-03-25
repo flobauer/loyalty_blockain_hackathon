@@ -28,7 +28,8 @@ export default function Feed({ events }) {
             <div>
               <p>
                 <span className="font-mono">{item.user.substring(0, 7)}</span>{" "}
-                <span className="text-gray-500">needs</span> {item.cash}
+                <span className="text-gray-500">needs</span> {item.cash}{" "}
+                {"💶".repeat(parseInt(item.cash, 10) / 10)}
               </p>
               <p className="text-gray-500 text-sm">
                 <MapPinIcon className="w-5 h-5 inline pb-1" />
@@ -39,7 +40,8 @@ export default function Feed({ events }) {
           <div className="p-2">
             <Button
               onClick={() => handleClick(item)}
-              className="w-16 h-16 rounded-full text-xs">
+              className="w-16 h-16 rounded-full text-xs"
+            >
               Raika-
               <br />
               tsching
@@ -50,7 +52,8 @@ export default function Feed({ events }) {
       {!openRequest && (
         <button
           onClick={() => setOpenRequest(true)}
-          className="fixed bottom-5 left-1/2 transform -translate-x-1/2 p-0 w-16 h-16 bg-yellow-400 rounded-full hover:bg-yellow-500 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
+          className="fixed bottom-5 left-1/2 transform -translate-x-1/2 p-0 w-16 h-16 bg-yellow-400 rounded-full hover:bg-yellow-500 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none"
+        >
           <PlusIcon className="w-8 h-8 mx-auto self-center" />
         </button>
       )}
