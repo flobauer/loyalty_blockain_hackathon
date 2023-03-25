@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CircularSlider from "@fseehawer/react-circular-slider";
 import Modal from "../components/Modal";
-import Button from "../components/Button";
 import PaymentButton from "../components/PaymentButton";
 import AskForGeolocation from "../components/AskForGeolocation";
 import { CheckIcon } from "@heroicons/react/24/outline";

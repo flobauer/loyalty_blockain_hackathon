@@ -8,12 +8,14 @@ export default function Layout({ title, back, children }) {
       <div className="bg-yellow-400 p-4 w-full">
         <div className="flex items-center max-w-6xl mx-auto">
           <h1 className="text-2xl font-bold text-black flex-1">
-            <Link to="/" className="flex items-center space-x-2">
+            <Link
+              to={back ? back : "/"}
+              className="flex items-center space-x-2">
               {back && <ChevronLeftIcon className="h-6 w-6 text-black" />}
               {title}
             </Link>
           </h1>
-          <Link to="/settings">
+          <Link to="/profile">
             <UserIcon className="h-6 w-6 text-black" aria-hidden="true" />
           </Link>
         </div>

@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { MapPinIcon, PlusIcon } from "@heroicons/react/24/outline";
 import Button from "./Button";
 import PaymentModal from "./PaymentModal";
@@ -19,12 +20,14 @@ export default function Feed({ events }) {
       {events.map((item) => (
         <div
           key={item.id}
-          className="bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 m-3 p-2 flex flex-row justify-between">
+          className="bg-white border border-gray-200 rounded-lg shadow m-3 p-2 flex flex-row justify-between">
           <div className="flex gap-4 items-center">
-            <img
-              src={"https://cat-avatars.vercel.app/api/cat?name=" + item.user}
-              className="w-16 h-16"
-            />
+            <Link to={`/profile/${item.user}`}>
+              <img
+                src={"https://cat-avatars.vercel.app/api/cat?name=" + item.user}
+                className="w-16 h-16"
+              />
+            </Link>
             <div>
               <p>
                 <span className="font-mono">{item.user.substring(0, 7)}</span>{" "}
@@ -40,8 +43,7 @@ export default function Feed({ events }) {
           <div className="p-2">
             <Button
               onClick={() => handleClick(item)}
-              className="w-16 h-16 rounded-full text-xs"
-            >
+              className="w-16 h-16 rounded-full text-xs">
               Raika-
               <br />
               tsching
@@ -52,8 +54,7 @@ export default function Feed({ events }) {
       {!openRequest && (
         <button
           onClick={() => setOpenRequest(true)}
-          className="fixed bottom-5 left-1/2 transform -translate-x-1/2 p-0 w-16 h-16 bg-yellow-400 rounded-full hover:bg-yellow-500 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none"
-        >
+          className="fixed bottom-5 left-1/2 transform -translate-x-1/2 p-0 w-16 h-16 bg-yellow-400 rounded-full hover:bg-yellow-500 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
           <PlusIcon className="w-8 h-8 mx-auto self-center" />
         </button>
       )}

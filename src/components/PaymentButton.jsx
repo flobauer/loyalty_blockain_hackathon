@@ -3,12 +3,7 @@ import { useLocalStorage } from "../helper/hooks";
 
 import { useNostr, dateToUnix } from "nostr-react";
 import Button from "./Button";
-import {
-  getEventHash,
-  generatePrivateKey,
-  getPublicKey,
-  signEvent,
-} from "nostr-tools";
+import { getEventHash, getPublicKey, signEvent } from "nostr-tools";
 
 export default function PaymentButton({
   value,
