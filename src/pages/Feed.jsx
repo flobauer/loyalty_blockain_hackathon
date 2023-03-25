@@ -21,7 +21,7 @@ export default function FeedPage() {
     .map((event) => {
       return {
         user: event.pubkey,
-        cash: event.content.split(" ")[event.content.split(" ").length - 1],
+        cash: event.content.split(":")[event.content.split(":").length - 1],
         distance: "10km",
         time: "5min ago",
       };
