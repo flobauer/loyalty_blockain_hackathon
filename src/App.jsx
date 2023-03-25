@@ -1,6 +1,6 @@
 import Feed from "./components/Feed";
 import QR from "./components/QR";
-import Payment from "./components/Payment";
+import Payment from "./pages/Payment";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default function MyApp() {
